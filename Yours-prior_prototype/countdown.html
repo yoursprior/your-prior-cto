@@ -1,0 +1,738 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your's Prior - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+        :root {
+            --black: #000000;
+            --gold: #A3835C;
+            --white: #FFFFFF;
+            --dark-grey: #333333;
+            --silver: #C0C0C0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: var(--white);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--black);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid var(--gold);
+            height: 150px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 180px;
+            width: auto;
+            object-fit: contain;
+            margin-left: auto;
+            margin-right: 700px;
+        }
+        nav h3 {
+            color: var(--silver);
+            font-size: 1.0 rem;
+        }
+        nav span{
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            
+        }
+        .nav-container a {
+         text-decoration: none; 
+         }
+
+        /* Main Content */
+        main {
+            padding-top: 160px;
+            background: url(c:\Users\User\OneDrive\Desktop\countdown\background.png);
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            text-align: center;
+            padding: 4rem 0;
+            min-height: calc(90vh - 160px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: url(c:\Users\User\OneDrive\Desktop\countdown\background.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .countdown-title {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .countdown-item {
+            background-color: rgba(255, 215, 0, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            min-width: 150px;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            background-color: var(--black);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: rgba(255, 215, 0, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 215, 0, 0.1);
+            border-color: var(--gold);
+        }
+
+        .service-title {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-description {
+            color: var(--silver);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .service-card.active .service-details {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .service-list li {
+            color: var(--white);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-list li:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .expand-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: var(--black); /* Black background */
+            padding: 20px;
+            border-top: 0.5px solid var(--gold);
+        }
+
+        
+        .footer-logo {
+            flex: 1;
+            margin-left: 80px; /* Add left margin to logo */
+        }
+        
+        .footer-logo-img {
+            max-width: 150px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            margin: 0 10px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color:var(--white); /* White text color */
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 3px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color:var(--silver); /* Light grey text color */
+        }
+        
+        .footer-links a:hover {
+            color:var(--white); /* White text color on hover */
+        }
+        
+        .social-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-links a {
+            margin:  5px;
+            font-size: 15px;
+            color:var(--silver); /* Light grey icon color */
+            margin-right: 10px;
+        }
+        
+        .social-links a:hover {
+            color:var(--white); /* White icon color on hover */
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 10px;
+            background-color:#333333;
+
+          }
+        
+          
+        #page2{
+            height:70vh;
+            width: 100%;
+            z-index: 10;
+
+        }
+        .marquee-title{
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+        }
+        
+          /* Carousel Styles */
+          .carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 50px auto;
+          }
+          
+          .carousel {
+            position: relative;
+            overflow: hidden;
+          }
+          
+          .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+          }
+          
+          .carousel-slide {
+            min-width: calc(100% / 3);
+            box-sizing: border-box;
+            padding: 10px;
+          }
+          
+          .carousel-slide img {
+            width: 100%;
+            height: 300px; /* Set a fixed height */
+            object-fit: cover; /* Ensures the image covers the container */
+            border-radius: 20px;
+          }
+          
+          /* Carousel Description */
+          .carousel-description {
+            margin-top: 10px;
+            font-size: 25px;
+            text-transform: uppercase;
+            color:var(--gold);
+            text-align: center;
+          }
+          
+          /* Navigation Buttons */
+          .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            border: none;
+            color:var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1;
+            border-radius: 5px;
+          }
+          
+          .carousel-button.prev {
+            left: 10px;
+          }
+          
+          .carousel-button.next {
+            right: 10px;
+          }
+          
+          /* Adjusting the carousel track container */
+          .carousel-track-container {
+            overflow: hidden;
+          }
+          
+          /* Responsive Adjustments */
+          @media (max-width: 768px) {
+            .carousel-slide {
+              min-width: calc(100% / 2); /* Show 2 images on smaller screens */
+            }
+          
+            .carousel-slide img {
+              height: 200px; /* Adjust height for smaller screens */
+            }
+          }
+
+
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .countdown-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 120px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo {
+                height: 120px;
+            }
+
+            main {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-title {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                height: 100px;
+            }
+
+            main {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <img src="fulllogo.png" alt="Your's Prior" class="logo">
+          <a href="login.html"><h3>LOG IN</h3></a> 
+            <span>|</span>
+           <a href="signup.html"><h3>SIGN UP</h3></a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="countdown" class="countdown-section">
+            <h1 class="countdown-title">WE WILL BE LIVE IN!</h1>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <h1 class="countdown-title">Our Services</h1>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h2 class="service-title">Personal and Lifestyle Concierge</h2>
+                    <p class="service-description">Tailored services to enhance personal comfort and luxury.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                         <li>Royal Dinner Concierge</li>
+                         <li>Fashion Designer Concierge</li>
+                         <li>VIP Escort Concierge</li>
+                         <li> Spiritual Concierge</li>
+                         <li>Fitness Concierge</li>
+                         <li>Swayamvar</li>
+                         <li>Old-age Concierge</li>   
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h2 class="service-title">Business & Professional Concierge</h2>
+                    <p class="service-description">Helping businesses and individuals streamline professional needs.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                            <li>PR Concierge</li>
+                            <li>Trending Demands Concierge</li>
+                            <li>Law Concierge</li>
+                            <li>Taxation Services</li>
+                            <li>University Concierge</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h2 class="service-title">Logistics & Emergency Services</h2>
+                    <p class="service-description">Swift and reliable solutions for urgent and transport-related needs.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                            <li>Quick Commerce Concierge (India)</li>
+                            <li>Transport Concierge (India)</li>
+                            <li>Ambulance Concierge (India)</li>
+                            <li>Security Concierge (Karnataka)</li>
+                            <li>RTO India</li>
+                            <li>Health Care Concierge</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <h2 class="service-title">Specialized & Exclusive Concierge</h2>
+                    <p class="service-description">unique and premium services for niche requirements.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                            <li>Real Estate Concierge (Karnataka)</li>
+                            <li>Architecture Concierge (World)</li>
+                            <li>Global Events Concierge</li>
+                            <li>Fantasy Concierge (World)</li>
+                            <li>Airport Concierge</li>
+                            <li>Temple Concierge</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <h2 class="service-title">Quick Assistance & Task-Based Concierge</h2>
+                    <p class="service-description">Get tasks done efficiently with minimal effort.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                            <li>Get Things Done in Two Mins</li>
+                            <li>Hire an Assistant in Two Mins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h2 class="service-title">Fund & Special Initiative Concierge</h2>
+                    <p class="service-description">Financial and social welfare services for specialized sectors.</p>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="service-details">
+                        <ul class="service-list">
+                            <li>CSRF Fund & PP Fund (India)</li>
+                            <li>Event Concierge (Global)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div>
+                 <p></p>
+            </div>
+
+            <div id="page2">
+                <h2 class="marquee-title" align="center">OUT OF THIS WORLD EXPERIENCE</h2>
+                <div class="carousel-container">
+                  <div class="carousel">
+                    <button class="carousel-button prev" aria-label="Previous">&#8249;</button>
+                    <div class="carousel-track-container">
+                      <ul class="carousel-track">
+                        <li class="carousel-slide">
+                          <img src="img1.jpg" alt="Experience 1">
+                          <div class="carousel-description">feel the wind with speed</div>
+                        </li>
+                        <li class="carousel-slide">
+                          <img src="img2.jpg" alt="Experience 2">
+                          <div class="carousel-description">Experience the religious visit</div>
+                        </li>
+                        <li class="carousel-slide">
+                          <img src="img3.jpg" alt="Experience 3">
+                          <div class="carousel-description">Experience the devine feeling</div>
+                        </li>
+                        <li class="carousel-slide">
+                          <img src="img4.jpg" alt="Experience 4">
+                          <div class="carousel-description">conqur the skies with us!</div>
+                        </li>
+                        <li class="carousel-slide">
+                          <img src="img5.jpg" alt="Experience 5">
+                          <div class="carousel-description">Live in the fantacy</div>
+                        </li>
+                        <li class="carousel-slide">
+                          <img src="img6.jpg" alt="Experience 6">
+                          <div class="carousel-description">Attend high-profile events</div>
+                        </li>
+                      </ul>
+                    </div>
+                    <button class="carousel-button next" aria-label="Next">&#8250;</button>
+                  </div>
+                </div>
+              </div>  
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="fulllogo.png" alt="Your's Prior Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-section">
+                <h3>MEMBERSHIP</h3>
+                <ul class="footer-links">
+                    <li><a href="#">For Individuals</a></li>
+                    <li><a href="#">For Businesses</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>SUPPORT</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>FOLLOW US</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/yours_prior/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/yours_prior?s=21" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@YoursPrior" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>yoursprior.com © 2025 All rights reserved.</p>
+        </div>
+    </footer>    
+
+    <script>
+        const endDate = new Date("28 February 2025 11:59:00 PM").getTime();
+
+// Countdown Timer
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Services Interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Toggle active class on clicked card
+            this.classList.toggle('active');
+
+            // Close other cards
+            serviceCards.forEach(otherCard => {
+                if (otherCard !== this && otherCard.classList.contains('active')) {
+                    otherCard.classList.remove('active');
+                }
+            });
+        });
+    });
+});
+
+    </script>
+
+      <!-- Carousel Functionality Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const prevButton = document.querySelector('.carousel-button.prev');
+      const nextButton = document.querySelector('.carousel-button.next');
+
+      let currentIndex = 0;
+
+      // Function to update slides
+      const updateSlides = () => {
+        track.style.transform = 'translateX(-' + currentIndex * (100 / 3) + '%)';
+      };
+
+      // Initial setup
+      updateSlides();
+
+      // Event listeners
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < slides.length - 3) { // Prevent overflow
+          currentIndex++;
+          updateSlides();
+        }
+      });
+
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlides();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
