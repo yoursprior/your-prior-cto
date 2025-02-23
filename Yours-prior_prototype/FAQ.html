@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yours prior FAQ Page</title>
+    <style>
+        
+        body {
+            
+            background:url(background.png);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #000000c4;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #A3835C;
+            text-transform: uppercase;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fafafa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5em;
+            color:#A3835C;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #ccc;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; 
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        
+        .ask-question {
+            margin-top: 40px;
+        }
+
+        .ask-question h2 {
+            font-size: 1.8em;
+            text-align: center;
+            color: #A3835C;
+            margin-bottom: 20px;
+        }
+
+        .ask-question form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ask-question input, .ask-question textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+        .ask-question input::placeholder, .ask-question textarea::placeholder {
+            color: #888;
+        }
+
+        .ask-question button {
+            padding: 10px 20px;
+            background-color: #A3835C;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .ask-question button:hover {
+            background-color: #ff3b2f;
+        }
+
+        
+        .faq-question:hover {
+            color: #ff3b2f;
+        }
+
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .faq-question {
+                font-size: 1em;
+            }
+
+            .ask-question h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">What is this website about?</div>
+            <div class="faq-answer">
+                This website is designed to provide you with the best experience in exploring exotic themes and content. Whether you're here for information or inspiration, we've got you covered.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I get started?</div>
+            <div class="faq-answer">
+                Getting started is easy! Simply navigate through our pages, and you'll find all the information you need to begin your journey.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is there a cost associated with using this site?</div>
+            <div class="faq-answer">
+                No, our website is completely free to use. We believe in providing valuable content without any hidden charges.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I contact support if I have issues?</div>
+            <div class="faq-answer">
+                Absolutely! We have a dedicated support team ready to assist you with any issues or questions you may have. You can reach out to us via the contact page.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What makes this site unique?</div>
+            <div class="faq-answer">
+                Our site stands out due to its exotic black-themed design, user-friendly interface, and a wealth of unique content that you won't find anywhere else.
+            </div>
+        </div>
+
+        
+        <div class="ask-question">
+            <h2>Ask a Question</h2>
+            <form id="askQuestionForm">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="question" name="question" rows="5" placeholder="Your Question" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        
+        document.getElementById('askQuestionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const question = document.getElementById('question').value;
+
+            
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Question:', question);
+
+            alert('Thank you for your question! We will get back to you soon.');
+            document.getElementById('askQuestionForm').reset();
+        });
+    </script>
+
+</body>
+</html>
